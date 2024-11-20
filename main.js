@@ -204,30 +204,6 @@ $('#wish-form').on('submit', async function (event) {
     }
   }
 });
-let isCooldown = false;
-
-document.querySelector('.bxs-heart').addEventListener('click', function (e) {
-  const button = e.currentTarget;
-
-  if (isCooldown) {
-    // Nếu đang trong trạng thái cooldown, không xử lý gì
-    return;
-  }
-
-  // Thực hiện hành động khi bấm nút
-  console.log("Nút đã được bấm!");
-
-  // Khóa trạng thái nút
-  isCooldown = true;
-  button.disabled = true; // Vô hiệu hóa nút
-
-  // Mở khóa trạng thái sau 4 giây
-  setTimeout(() => {
-    isCooldown = false;
-    button.disabled = false; // Mở khóa nút
-    console.log("Nút đã được mở khóa!");
-  }, 4000);
-});
 document.addEventListener('DOMContentLoaded', () => {
   const music = document.getElementById('background-music');
   
