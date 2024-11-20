@@ -204,47 +204,22 @@ $('#wish-form').on('submit', async function (event) {
     }
   }
 });
-ocument.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const music = document.getElementById('background-music');
-
-  // Kiểm tra trạng thái từ localStorage
-  if (localStorage.getItem('isPlaying') === 'true') {
-      music.play().catch(() => {
-          // Nếu có lỗi, đợi người dùng tương tác
-          setupEventListeners();
-      });
-  } else {
-      setupEventListeners();
-  }
-
-  // Hàm phát nhạc khi có bất kỳ hành động tương tác
-  function setupEventListeners() {
-      const playMusic = () => {
-          music.play();
-          localStorage.setItem('isPlaying', 'true'); // Lưu trạng thái phát nhạc
-          removeEventListeners();
-      };
-
-      document.addEventListener('scroll', playMusic);
-      document.addEventListener('click', playMusic);
-      document.addEventListener('mousemove', playMusic);
-      document.addEventListener('touchstart', playMusic);
-  }
-
-  // Hàm xóa các sự kiện sau khi nhạc được phát
-  function removeEventListeners() {
+  
+  // Hàm phát nhạc
+  const playMusic = () => {
+      music.play();
+      // Xóa tất cả các sự kiện sau khi nhạc được phát
       document.removeEventListener('scroll', playMusic);
       document.removeEventListener('click', playMusic);
       document.removeEventListener('mousemove', playMusic);
       document.removeEventListener('touchstart', playMusic);
-  }
-
-  // Khi người dùng thoát hoặc làm mới trang
-  window.addEventListener('beforeunload', () => {
-      if (!music.paused) {
-          localStorage.setItem('isPlaying', 'true'); // Giữ trạng thái nếu nhạc đang phát
-      } else {
-          localStorage.setItem('isPlaying', 'false');
-      }
-  });
+  };
+  
+  // Thêm sự kiện cho các hành động tương tác
+  document.addEventListener('scroll', playMusic);
+  document.addEventListener('click', playMusic);
+  document.addEventListener('mousemove', playMusic);
+  document.addEventListener('touchstart', playMusic);
 });
