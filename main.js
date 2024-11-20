@@ -206,41 +206,31 @@ $('#wish-form').on('submit', async function (event) {
 });
 let isCooldown = false;
 
-document.querySelector('.bxs-heart').addEventListener('click', function () {
+document.querySelector('.bxs-heart').addEventListener('click', function (e) {
+  const button = e.currentTarget;
+
   if (isCooldown) {
-    // Hiển thị thông báo bằng SweetAlert
-    Swal.fire({
-      title: 'Vui lòng chờ!',
-      text: 'Bạn cần đợi 4 giây trước khi bấm lại.',
-      icon: 'info',
-      timer: 2000, // Tự động tắt sau 2 giây
-      timerProgressBar: true,
-      showConfirmButton: false,
-    });
+    // Nếu đang trong trạng thái cooldown, không xử lý gì
     return;
   }
 
   // Thực hiện hành động khi bấm nút
   console.log("Nút đã được bấm!");
-  Swal.fire({
-    title: 'Thành công!',
-    text: 'Nút đã được bấm, chờ 4 giây để bấm lại.',
-    icon: 'success',
-    timer: 2000,
-    timerProgressBar: true,
-    showConfirmButton: false,
-  });
 
-  // Khóa nút trong 4 giây
+  // Khóa trạng thái nút
   isCooldown = true;
+  button.disabled = true; // Vô hiệu hóa nút
+
+  // Mở khóa trạng thái sau 4 giây
   setTimeout(() => {
     isCooldown = false;
+    button.disabled = false; // Mở khóa nút
+    console.log("Nút đã được mở khóa!");
   }, 4000);
 });
-
 document.addEventListener('DOMContentLoaded', () => {
   const music = document.getElementById('background-music');
-
+  
   // Kiểm tra nếu phần tử âm thanh tồn tại
   if (!music) {
     console.error("Không tìm thấy phần tử âm thanh với id 'background-music'");
@@ -260,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("Lỗi khi phát nhạc:", err);
     });
   };
-
+  
   // Thêm sự kiện cho các hành động tương tác
   document.addEventListener('scroll', playMusic);
   document.addEventListener('click', playMusic);
