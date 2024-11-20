@@ -206,7 +206,20 @@ $('#wish-form').on('submit', async function (event) {
 });
 document.addEventListener('DOMContentLoaded', () => {
   const music = document.getElementById('background-music');
-  document.body.addEventListener('click', () => {
+  
+  // Hàm phát nhạc
+  const playMusic = () => {
       music.play();
-  }, { once: true });
+      // Xóa tất cả các sự kiện sau khi nhạc được phát
+      document.removeEventListener('scroll', playMusic);
+      document.removeEventListener('click', playMusic);
+      document.removeEventListener('mousemove', playMusic);
+      document.removeEventListener('touchstart', playMusic);
+  };
+  
+  // Thêm sự kiện cho các hành động tương tác
+  document.addEventListener('scroll', playMusic);
+  document.addEventListener('click', playMusic);
+  document.addEventListener('mousemove', playMusic);
+  document.addEventListener('touchstart', playMusic);
 });
