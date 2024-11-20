@@ -29,7 +29,7 @@ function validateInput(name, wish) {
   if (!name || name.trim() === "") {
     $('#name-error').text('Tên không được để trống.');
     isValid = false;
-  } else if (name.length > 20) {
+  } else if (name.trim().length > 20) {
     $('#name-error').text('Tên không được vượt quá 20 ký tự.');
     isValid = false;
   }
@@ -38,7 +38,7 @@ function validateInput(name, wish) {
   if (!wish || wish.trim() === "") {
     $('#wish-error').text('Lời chúc không được để trống.');
     isValid = false;
-  } else if (wish.length > 50) {
+  } else if (wish.trim().length > 50) {
     $('#wish-error').text('Lời chúc không được vượt quá 50 ký tự.');
     isValid = false;
   }
@@ -117,13 +117,13 @@ $(document).ready(function () {
 $(document).ready(function () {
   // Khởi tạo Datepicker
   $("#datepicker").datepicker({
-    defaultDate: new Date(2024, 10, 25), // Ngày mặc định (tháng trong JS tính từ 0)
+    defaultDate: new Date(2024, 10, 26), // Ngày mặc định (tháng trong JS tính từ 0)
     beforeShowDay: function (date) {
-      // Đánh dấu ngày 25
+      // Đánh dấu ngày 26
       const day = date.getDate();
       const month = date.getMonth();
       const year = date.getFullYear();
-      if (day === 25 && month === 10 && year === 2024) {
+      if (day === 26 && month === 10 && year === 2024) {
         return [true, "highlight-day", "Ngày đặc biệt"];
       }
       return [true, "", ""];
