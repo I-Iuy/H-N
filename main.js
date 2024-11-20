@@ -204,3 +204,9 @@ $('#wish-form').on('submit', async function (event) {
     }
   }
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const music = document.getElementById('background-music');
+  document.body.addEventListener('click', () => {
+      music.play();
+  }, { once: true });
+});
