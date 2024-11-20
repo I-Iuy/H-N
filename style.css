@@ -1,0 +1,66 @@
+/* Font chữ cho tiêu đề */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Dancing Script', cursive;
+  /* Áp dụng font lãng mạn cho tiêu đề */
+}
+
+/* Font chữ cho nội dung */
+body,
+p,
+ul,
+ol,
+li,
+.content {
+  font-family: 'Quicksand', sans-serif;
+  /* Áp dụng font nội dung tương thích */
+}
+
+.custom-img {
+  width: 100%;
+  /* Đảm bảo hình ảnh chiếm 100% chiều rộng của phần tử chứa */
+  height: auto;
+  /* Tự động điều chỉnh chiều cao để giữ tỷ lệ */
+  object-fit: cover;
+  max-width: 500px;
+  max-height: 1200px;
+  /* Giới hạn chiều rộng và chiều cao tối đa của hình ảnh */
+  box-shadow: 0 4px 8px rgba(255, 160, 122, 0.1);
+  /* Bóng đổ màu hồng đào */
+}
+
+/* ĐỒNG HỒ  */
+.timer {
+  display: flex;
+  flex-wrap: wrap; /* Đảm bảo các phần tử tự động xuống dòng nếu không đủ chỗ */
+  justify-content: center; /* Căn giữa */
+  gap: 15px; /* Khoảng cách giữa các phần tử */
+}
+
+.timer-item {
+  display: flex;
+  flex-direction: column; /* Số và chữ bên dưới */
+  align-items: center;
+  min-width: 80px; /* Đảm bảo kích thước đồng hồ ngang ổn định */
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timer-item span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #795548;
+}
+
+.timer-item small {
+  font-size: 12px;
+  color: #a1887f;
+}
+
